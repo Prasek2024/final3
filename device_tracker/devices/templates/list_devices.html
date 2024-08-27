@@ -1,0 +1,24 @@
+{% extends "master.html" %}
+
+{% block title %}
+  BookList
+{% endblock %}
+
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+
+<h1>Device List</h1>
+<a href="{% url 'add_device' %}">Add New Device</a>
+<ul>
+    {% for book in object_list %}
+    <li>
+        <a href="">{{ device.type }}</a> running on {{ device.vendor }} with {{ device.serial_number }} on OAM address {{ device.OAM_address }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
